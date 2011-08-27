@@ -1,9 +1,5 @@
 Variable Numeric question type
 
-This question type requires that gapselect question type
-https://github.com/timhunt/moodle-qtype_gapselect/
-to be installed in order to work.
-
 This question type is the work of Jamie Pratt (http://jamiep.org/).
 
 This question type is compatible with Moodle 2.1+.
