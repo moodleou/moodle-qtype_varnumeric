@@ -25,6 +25,10 @@
 
 $string['addingvarnumeric'] = 'Adding a Variable Numeric Question';
 $string['editingvarnumeric'] = 'Editing a Variable Numeric Question';
+$string['value'] = 'Value';
+$string['value_help'] = 'Enter values for \'Predefined Variables\' here or you will see calculated values displayed here for a \'Calculated Variable\'.
+
+Be aware that for a calculated value the value you see will be different for each user.';
 $string['varnumeric'] = 'Variable Numeric';
 $string['varnumeric_help'] = 'In response to a question the respondent types a number. Numbers used in the question and used to calculate the answer are chosen from predefined sets which can be precalculated from mathematical expressions.';
 $string['varnumeric_link'] = 'question/type/varnumeric';
