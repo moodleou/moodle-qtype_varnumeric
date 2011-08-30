@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/questionlib.php');
 require_once($CFG->dirroot . '/question/engine/lib.php');
-require_once($CFG->dirroot . '/question/type/varnumericset/calculator.php');
+require_once($CFG->dirroot . '/question/type/varnumeric/calculator.php');
 require_once($CFG->dirroot . '/question/type/varnumericset/questiontypebase.php');
 
 /**
@@ -48,6 +48,6 @@ class qtype_varnumeric extends qtype_varnumeric_base {
     }
 
     public function requires_qtypes() {
-        return array('varnumeric');
+        return array('varnumericset');
     }
 }
