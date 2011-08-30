@@ -47,4 +47,9 @@ class qtype_varnumeric_edit_form extends qtype_varnumeric_edit_form_base {
         $mform->setType("variant0", PARAM_RAW_TRIMMED);
         return array($repeated, $repeatedoptions);
     }
+
+    public function validation($data, $files) {
+        $data['noofvariants'] = 1;
+        return parent::validation($data, $files);
+    }
 }
