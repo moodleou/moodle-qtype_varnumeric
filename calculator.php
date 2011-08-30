@@ -39,4 +39,9 @@ class qtype_varnumeric_calculator extends qtype_varnumeric_calculator_base {
         parent::set_random_seed($randomseed, $questionstamp);
         $this->randomseed .= $USER->id;
     }
+
+    public function get_num_variants() {
+        return 1;
+    }
+
 }
