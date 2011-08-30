@@ -35,6 +35,7 @@ class qtype_varnumeric_calculator extends qtype_varnumeric_calculator_base {
      *                              question object
      */
     public function set_random_seed($randomseed, $questionstamp) {
+        global $USER;
         parent::set_random_seed($randomseed, $questionstamp);
         $this->randomseed .= $USER->id;
     }
