@@ -30,6 +30,10 @@ $string['value_help'] = 'Enter values for \'Predefined Variables\' here or you w
 
 Be aware that for a calculated value the value you see will be different for each user.';
 $string['varnumeric'] = 'Variable Numeric';
-$string['varnumeric_help'] = 'In response to a question the respondent types a number. Numbers used in the question and used to calculate the answer are chosen from predefined sets which can be precalculated from mathematical expressions.';
+$string['varnumeric_help'] = 'In response to a question the respondent types a number.
+
+Numbers used in the question and used to calculate the answer are calculated on the fly from mathematical expressions or predefined variables.
+
+All expressions are calculated on the fly and values from random functions are different for all users. For a question with set values for a number of question \'variants\', with expressions precalculated and with random values the same for each user see the \'variable numeric set\' question type.';
 $string['varnumeric_link'] = 'question/type/varnumeric';
-$string['varnumericsummary'] = 'Allows a numeric response';
+$string['varnumericsummary'] = 'Allows a numeric response, expressions are evaluated on the fly and the evaluated expression is compared to the student response';
