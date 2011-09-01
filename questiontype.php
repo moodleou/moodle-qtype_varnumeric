@@ -43,7 +43,7 @@ class qtype_varnumeric extends qtype_varnumeric_base {
         return true;
     }
 
-    public function db_table_prefix(){
+    public function db_table_prefix() {
         return 'qtype_varnumeric';
     }
 
