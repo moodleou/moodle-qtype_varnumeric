@@ -37,4 +37,7 @@ require_once($CFG->dirroot . '/question/type/varnumericset/questionbase.php');
  */
 class qtype_varnumeric_question extends qtype_varnumeric_question_base {
 
+    public function get_num_variants() {
+        return 1000000;
+    }
 }
