@@ -47,10 +47,6 @@ class qtype_varnumeric extends qtype_varnumeric_base {
         return 'qtype_varnumeric';
     }
 
-    public function requires_qtypes() {
-        return array('varnumericset');
-    }
-
     public function save_question_options($form) {
         $form->noofvariants = 1;
         return parent::save_question_options($form);
