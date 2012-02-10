@@ -25,6 +25,7 @@
 
 $string['addingvarnumeric'] = 'Adding a Variable numeric question';
 $string['editingvarnumeric'] = 'Editing a Variable numeric question';
+$string['pluginname'] = 'Variable numeric';
 $string['value'] = 'Value';
 $string['value_help'] = 'Enter values for \'Predefined variables\' here or you will see calculated values displayed here for a \'Calculated variable\'.
 
