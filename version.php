@@ -17,16 +17,21 @@
 /**
  * Short answer question type version information.
  *
- * @package    qtype
- * @subpackage varnumeric
+ * @package    qtype_varnumeric
  * @copyright  2011 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version  = 2010090501;
-$plugin->requires = 2010090501;
+
+$plugin->version   = 2011082701;
+$plugin->requires  = 2011120500;
+$plugin->cron      = 0;
+$plugin->component = 'qtype_varnumeric';
+$plugin->maturity  = MATURITY_STABLE;
+$plugin->release   = '1.0';
+
 $plugin->dependencies = array(
     'qtype_varnumericset' => 2011082701
 );
