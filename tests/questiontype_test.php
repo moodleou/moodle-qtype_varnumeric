@@ -19,12 +19,13 @@
  *
  * @package    qtype
  * @subpackage varnumeric
- * @copyright  2011 The Open University
+ * @copyright  2012 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 
 defined('MOODLE_INTERNAL') || die();
+global $CFG;
 
 require_once($CFG->dirroot . '/question/type/varnumeric/questiontype.php');
 
@@ -32,10 +33,11 @@ require_once($CFG->dirroot . '/question/type/varnumeric/questiontype.php');
 /**
  * Unit tests for the varnumeric question type class.
  *
- * @copyright  2011 The Open University
+ * @copyright  2012 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @group      qtype_varnumeric
  */
-class qtype_varnumeric_test extends UnitTestCase {
+class qtype_varnumeric_test extends basic_testcase {
     public static $includecoverage = array(
         'question/type/questiontype.php',
         'question/type/varnumeric/questiontype.php',
@@ -43,17 +45,18 @@ class qtype_varnumeric_test extends UnitTestCase {
 
     protected $qtype;
 
-    public function setUp() {
+    protected function setUp() {
         $this->qtype = new qtype_varnumeric();
     }
 
-    public function tearDown() {
+    protected function tearDown() {
         $this->qtype = null;
     }
 
     protected function get_test_question_data() {
         $q = new stdClass();
         $q->id = 1;
+        $q->options = new stdClass();
         $q->options->answers[1] = (object) array('answer' => 'frog', 'fraction' => 1);
         $q->options->answers[2] = (object) array('answer' => '*', 'fraction' => 0.1);
 
@@ -61,7 +64,7 @@ class qtype_varnumeric_test extends UnitTestCase {
     }
 
     public function test_name() {
-        $this->assertEqual($this->qtype->name(), 'varnumeric');
+        $this->assertEquals($this->qtype->name(), 'varnumeric');
     }
 
     public function test_can_analyse_responses() {
@@ -70,13 +73,13 @@ class qtype_varnumeric_test extends UnitTestCase {
 
     public function test_get_random_guess_score() {
         $q = $this->get_test_question_data();
-        $this->assertEqual(0.1, $this->qtype->get_random_guess_score($q));
+        $this->assertEquals(0.1, $this->qtype->get_random_guess_score($q));
     }
 
     public function test_get_possible_responses() {
         $q = $this->get_test_question_data();
 
-        $this->assertEqual(array(
+        $this->assertEquals(array(
             $q->id => array(
                 1 => new question_possible_response('frog', 1),
                 2 => new question_possible_response('*', 0.1),
