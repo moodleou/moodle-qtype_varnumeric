@@ -29,7 +29,7 @@ defined('MOODLE_INTERNAL') || die();
 
 
 /**
- * Checks file access for short answer questions.
+ * Checks file access for varnumeric questions.
  */
 function qtype_varnumeric_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload) {
     global $DB, $CFG;
