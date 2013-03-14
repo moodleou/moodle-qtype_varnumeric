@@ -17,12 +17,10 @@
 /**
  * Unit tests for the varnumeric question definition class.
  *
- * @package    qtype
- * @subpackage varnumeric
- * @copyright  2012 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   qtype_varnumeric
+ * @copyright 2012 The Open University
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 
 defined('MOODLE_INTERNAL') || die();
 global $CFG;
@@ -34,9 +32,9 @@ require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
 /**
  * Unit tests for the varnumeric question definition class.
  *
- * @copyright  2012 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @group      qtype_varnumeric
+ * @copyright 2012 The Open University
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @group qtype_varnumeric
  */
 class qtype_varnumeric_question_test extends basic_testcase {
     public function test_num_within_allowed_error() {
@@ -53,6 +51,7 @@ class qtype_varnumeric_question_test extends basic_testcase {
         $this->assertFalse(
                 qtype_varnumeric_question::num_within_allowed_error('12301.5', 1.23e4, '1'));
     }
+
     public function test_wrong_by_a_factor_of_ten() {
         $this->assertTrue(
             qtype_varnumeric_question::wrong_by_a_factor_of_ten('1.23e4', 1.23e5, '', 1));
@@ -67,6 +66,7 @@ class qtype_varnumeric_question_test extends basic_testcase {
         $this->assertFalse(
             qtype_varnumeric_question::wrong_by_a_factor_of_ten('152000', 150, 1, 3));
     }
+
     public function test_has_number_of_sig_figs() {
         $this->assertTrue(
             qtype_varnumeric_question::has_number_of_sig_figs('1.23e4', 3));
@@ -89,6 +89,7 @@ class qtype_varnumeric_question_test extends basic_testcase {
         $this->assertFalse(
             qtype_varnumeric_question::has_number_of_sig_figs('152000', 2));
     }
+
     public function test_has_too_many_sig_figs() {
         $this->assertTrue(
             qtype_varnumeric_question::has_too_many_sig_figs('1.23456', 1.23456, 2));
@@ -111,41 +112,40 @@ class qtype_varnumeric_question_test extends basic_testcase {
         $this->assertFalse(
             qtype_varnumeric_question::has_too_many_sig_figs('-1.23456e-12', -1.2346e-12, 4));
     }
+
     public function test_rounding_incorrect() {
         $this->assertTrue(
             qtype_varnumeric_question::rounding_incorrect('1.234', 1.2345, 4));
         $this->assertTrue(
             qtype_varnumeric_question::rounding_incorrect('1.2345', 1.23456, 5));
-        //this routine is not meant to catch incorrect rounding up
+        // This routine is not meant to catch incorrect rounding up.
         $this->assertFalse(
             qtype_varnumeric_question::rounding_incorrect('1.3', 1.23, 2));
         $this->assertFalse(
             qtype_varnumeric_question::rounding_incorrect('1.23', 1.23456, 2));
-
     }
+
     public function test_round_to() {
         $this->assertSame('0.123', qtype_varnumeric_question::round_to(0.12345, 3, false));
         $this->assertSame('0.1235', qtype_varnumeric_question::round_to(0.12345, 4, false));
-        //incorrect rounding
+        // Incorrect rounding.
         $this->assertSame('1.235e-1', qtype_varnumeric_question::round_to(0.12345, 4, true));
-        //incorrect rounding
+        // Incorrect rounding.
         $this->assertSame('1.234e-1',
                                     qtype_varnumeric_question::round_to(0.12345, 4, true, true));
         $this->assertSame('1234.57',
                                     qtype_varnumeric_question::round_to(1234.5678, 6, false));
         $this->assertSame('1.23457e3',
                                     qtype_varnumeric_question::round_to(1234.5678, 6, true));
-        //incorrect rounding
+        // Incorrect rounding.
         $this->assertSame('1234.56',
                                     qtype_varnumeric_question::round_to(1234.5678, 6, false, true));
         $this->assertSame('1.23456e3',
                                     qtype_varnumeric_question::round_to(1234.5678, 6, true, true));
-        //always round down when incorrect rounding requested
+        // Always round down when incorrect rounding requested.
         $this->assertSame('1234.56',
                                     qtype_varnumeric_question::round_to(1234.5600, 6, false, true));
         $this->assertSame('1.23456e3',
                                     qtype_varnumeric_question::round_to(1234.5600, 6, true, true));
     }
-
-
 }

@@ -15,11 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *
- * @package    qtype
- * @subpackage varnumeric
- * @copyright  2012 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   qtype_varnumeric
+ * @copyright 2012 The Open University
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 
@@ -32,11 +30,12 @@ require_once($CFG->libdir . '/evalmath/evalmath.class.php');
 /**
  * Unit tests for the EvalMath expression evaluator, specific to this question type.
  *
- * @copyright  2012 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @group      qtype_varnumeric
+ * @copyright 2012 The Open University
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @group qtype_varnumeric
  */
 class qtype_varnumeric_evalmath_test extends basic_testcase {
+
     public function test_basic_expressions() {
         $ev = new EvalMath(true, true);
 
@@ -49,6 +48,7 @@ class qtype_varnumeric_evalmath_test extends basic_testcase {
         $this->assertEquals($ev->evaluate('a'), 2);
 
     }
+
     public function test_random_expressions() {
         $ev = new EvalMath(true, true);
         $results = array();
@@ -67,5 +67,4 @@ class qtype_varnumeric_evalmath_test extends basic_testcase {
         }
         $this->assertTrue(min($results) >= 500 && max($results) <= 1000);
     }
-
 }

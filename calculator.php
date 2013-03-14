@@ -20,10 +20,9 @@ require_once($CFG->dirroot . '/question/type/varnumericset/calculatorbase.php');
 /**
  * Class for evaluating variants for varnumericset question type.
  *
- * @package    qtype
- * @subpackage varnumericset
- * @copyright  2011 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   qtype_varnumericset
+ * @copyright 2011 The Open University
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_varnumeric_calculator extends qtype_varnumeric_calculator_base {
 
@@ -32,8 +31,7 @@ class qtype_varnumeric_calculator extends qtype_varnumeric_calculator_base {
     }
 
     protected function get_defined_variant($varno, $variantno) {
-        //whatever the variant no we always use the first
-        //defined variant.
+        // Whatever the variant no we always use the first defined variant.
         $variantno = 0;
         return parent::get_defined_variant($varno, $variantno);
     }
