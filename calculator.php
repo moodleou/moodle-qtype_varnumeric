@@ -20,7 +20,7 @@ require_once($CFG->dirroot . '/question/type/varnumericset/calculatorbase.php');
 /**
  * Class for evaluating variants for varnumericset question type.
  *
- * @package   qtype_varnumericset
+ * @package    qtype_varnumeric
  * @copyright 2011 The Open University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
