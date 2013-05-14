@@ -71,7 +71,7 @@ class qtype_combined_combinable_varnumeric extends qtype_combined_combinable_tex
                            '',
                            false);
         $mform->addElement('selectyesno', $this->form_field_name('requirescinotation'),
-                           get_string('scinotation', 'qtype_combined'));
+                           get_string('scinotation', 'qtype_varnumeric'));
     }
 
     public function data_to_form($context, $fileoptions) {
@@ -92,11 +92,11 @@ class qtype_combined_combinable_varnumeric extends qtype_combined_combinable_tex
         if ('' !== trim($this->formdata->error[0])) {
             if (!$interpret->match($this->formdata->error[0])) {
                 $errors[$this->form_field_name('answergroup')] =
-                                                    get_string('err_notavalidnumberinerrortolerance', 'qtype_combined');
+                                                    get_string('err_notavalidnumberinerrortolerance', 'qtype_varnumeric');
             }
         }
         if (!$interpret->match($this->formdata->answer[0])) {
-            $errors[$this->form_field_name('answergroup')] = get_string('err_notavalidnumberinanswer', 'qtype_combined');
+            $errors[$this->form_field_name('answergroup')] = get_string('err_notavalidnumberinanswer', 'qtype_varnumeric');
         }
 
         return $errors;
