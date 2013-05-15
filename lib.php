@@ -18,8 +18,7 @@
  * Serve question type files
  *
  * @since      2.0
- * @package    qtype
- * @subpackage varnumeric
+ * @package    qtype_varnumeric
  * @copyright  2011 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
