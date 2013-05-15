@@ -14,25 +14,19 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-
-require_once($CFG->dirroot . '/question/type/varnumericset/calculatorbase.php');
-
 /**
- * Class for evaluating variants for varnumericset question type.
+ * Combined question embedded sub question renderer class.
  *
  * @package    qtype_varnumeric
- * @copyright 2011 The Open University
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2013 The Open University
+ * @author     Jamie Pratt <me@jamiep.org>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_varnumeric_calculator extends qtype_varnumeric_calculator_base {
 
-    public function get_num_variants_in_form() {
-        return 1;
-    }
 
-    protected function get_defined_variant($varno, $variantno) {
-        // Whatever the variant no we always use the first defined variant.
-        $variantno = 0;
-        return parent::get_defined_variant($varno, $variantno);
-    }
+defined('MOODLE_INTERNAL') || die();
+
+
+class qtype_varnumeric_embedded_renderer extends qtype_combined_text_entry_renderer_base {
+
 }

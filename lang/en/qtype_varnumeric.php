@@ -17,12 +17,13 @@
 /**
  * Strings for component 'qtype_varnumeric', language 'en', branch 'MOODLE_20_STABLE'
  *
- * @package    qtype
- * @subpackage varnumeric
+ * @package    qtype_varnumeric
  * @copyright  2011 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
+$string['combinedcontrolnamevarnumeric'] = 'numeric input';
+$string['err_notavalidnumberinanswer'] = 'You need to enter a valid number here in the answer field.';
+$string['err_notavalidnumberinerrortolerance'] = 'You have entered an invalid number in the error response field.';
 $string['pluginname'] = 'Variable numeric';
 $string['pluginname_help'] = 'In response to a question the respondent types a number.
 
@@ -33,6 +34,7 @@ $string['pluginname_link'] = 'question/type/varnumeric';
 $string['pluginnameadding'] = 'Adding a Variable numeric question';
 $string['pluginnameediting'] = 'Editing a Variable numeric question';
 $string['pluginnamesummary'] = 'Allows a numeric response, expressions are evaluated on the fly and the evaluated expression is compared to the student response';
+$string['scinotation'] = 'Scientific notation';
 $string['value'] = 'Value';
 $string['value_help'] = 'Enter values for \'Predefined variables\' here or you will see calculated values displayed here for a \'Calculated variable\'.
 
