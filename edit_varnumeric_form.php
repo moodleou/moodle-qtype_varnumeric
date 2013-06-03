@@ -44,6 +44,7 @@ class qtype_varnumeric_edit_form extends qtype_varnumeric_edit_form_base {
         $repeatedoptions["variant0"]['disabledif'] = array('vartype', 'eq', 0);
         $repeatedoptions["variant0"]['helpbutton'] = array('value', 'qtype_varnumeric');
         $mform->setType("variant0", PARAM_RAW_TRIMMED);
+        $this->add_value_form_last_field($mform, $repeated, $repeatedoptions);
         return array($repeated, $repeatedoptions);
     }
 
