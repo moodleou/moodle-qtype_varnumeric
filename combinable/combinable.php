@@ -62,8 +62,8 @@ class qtype_combined_combinable_varnumeric extends qtype_combined_combinable_tex
                                                  $this->form_field_name('error[0]'),
                                                  get_string('error', 'qtype_varnumericset'),
                                                  array('size' => 16));
-        $mform->setType($this->form_field_name('answer'), PARAM_TEXT);
-        $mform->setType($this->form_field_name('error'), PARAM_TEXT);
+        $mform->setType($this->form_field_name('answer'), PARAM_RAW);
+        $mform->setType($this->form_field_name('error'), PARAM_RAW);
         $mform->addElement('group',
                            $this->form_field_name('answergroup'),
                            get_string('answer', 'question'),
