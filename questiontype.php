@@ -50,4 +50,8 @@ class qtype_varnumeric extends qtype_varnumeric_base {
         $form->noofvariants = 1;
         return parent::save_question_options($form);
     }
+
+    public function break_down_stats_and_response_analysis_by_variant($questiondata) {
+        return false;
+    }
 }
