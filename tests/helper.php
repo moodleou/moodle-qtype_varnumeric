@@ -110,7 +110,6 @@ class qtype_varnumeric_test_helper extends question_test_helper {
         $form->checknumerical[4] = 0;
         $form->checknumerical[5] = 0;
 
-
         $form->checkscinotation = array();
         $form->checkscinotation[0] = 0;
         $form->checkscinotation[1] = 0;
@@ -118,7 +117,6 @@ class qtype_varnumeric_test_helper extends question_test_helper {
         $form->checkscinotation[3] = 0;
         $form->checkscinotation[4] = 0;
         $form->checkscinotation[5] = 0;
-
 
         $form->checkpowerof10 = array();
         $form->checkpowerof10[0] = 0;
@@ -128,7 +126,6 @@ class qtype_varnumeric_test_helper extends question_test_helper {
         $form->checkpowerof10[4] = 0;
         $form->checkpowerof10[5] = 0;
 
-
         $form->checkrounding = array();
         $form->checkrounding[0] = 0;
         $form->checkrounding[1] = 0;
@@ -136,7 +133,6 @@ class qtype_varnumeric_test_helper extends question_test_helper {
         $form->checkrounding[3] = 0;
         $form->checkrounding[4] = 0;
         $form->checkrounding[5] = 0;
-
 
         $form->syserrorpenalty = array();
         $form->syserrorpenalty[0] = 0.0;
