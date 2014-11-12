@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Short answer question type version information.
+ * Variable numeric uestion type version information.
  *
  * @package   qtype_varnumeric
  * @copyright 2011 The Open University
@@ -24,14 +24,13 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-
-$plugin->version   = 2014042800;
-$plugin->requires  = 2013051400;
+$plugin->version   = 2014111200;
+$plugin->requires  = 2013101800;
 $plugin->cron      = 0;
 $plugin->component = 'qtype_varnumeric';
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = '1.5 for Moodle 2.5+';
+$plugin->release   = '1.6 for Moodle 2.6+';
 
 $plugin->dependencies = array(
-    'qtype_varnumericset' => 2014010800
+    'qtype_varnumericset' => 2014111200,
 );
