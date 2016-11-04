@@ -121,4 +121,18 @@ class qtype_combined_combinable_varnumeric extends qtype_combined_combinable_tex
         // Require scientific notation is always off for this question type even when the sup sub editor is on.
         $this->question->requirescinotation = false;
     }
+
+    /**
+     * Over-ride parent function for varnumeric subq type to allow answers of '0' to be valid.
+     * @param $fieldname
+     * @return bool is the submitted data in array with index $fieldname for this subq empty?
+     */
+    protected function submitted_data_array_not_empty($fieldname) {
+        foreach ($this->get_submitted_param_array($fieldname) as $value) {
+            if (!empty($value) || ($fieldname == 'answer' && $value === '0')) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
