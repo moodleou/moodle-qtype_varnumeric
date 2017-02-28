@@ -73,7 +73,7 @@ class qtype_varnumeric_statistics_from_steps_testcase extends mod_quiz_attempt_w
         $this->report = new quiz_statistics_report();
         $whichattempts = QUIZ_GRADEAVERAGE;
         $whichtries = question_attempt::LAST_TRY;
-        $groupstudents = array();
+        $groupstudents = new \core\dml\sql_join();
         $questions = $this->report->load_and_initialise_questions_for_calculations($this->quiz);
         list($quizstats, $questionstats) = $this->report->get_all_stats_and_analysis(
                 $this->quiz, $whichattempts, $whichtries, $groupstudents, $questions);
