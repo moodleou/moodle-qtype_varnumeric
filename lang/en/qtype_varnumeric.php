@@ -39,3 +39,4 @@ $string['value'] = 'Value';
 $string['value_help'] = 'Enter values for \'Predefined variables\' here or you will see calculated values displayed here for a \'Calculated variable\'.
 
 Be aware that for a calculated value the value you see will be different for each user.';
+$string['privacy:metadata'] = 'The Variable numeric plugin does not store any personal data.';
