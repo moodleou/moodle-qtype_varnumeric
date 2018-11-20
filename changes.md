@@ -1,6 +1,11 @@
 # Change log for the Variable numeric question type
 
 
+## Changes in 1.8
+
+* Fix Behat tests to work with Moodle 3.6.
+
+
 ## Changes in 1.7
 
 * Privacy API implementation.
