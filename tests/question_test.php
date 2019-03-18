@@ -37,21 +37,6 @@ require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
  * @group qtype_varnumeric
  */
 class qtype_varnumeric_question_test extends basic_testcase {
-    public function test_num_within_allowed_error() {
-        $this->assertTrue(
-                qtype_varnumeric_question::num_within_allowed_error('1.230001e4', 1.23e4, ''));
-        $this->assertFalse(
-                qtype_varnumeric_question::num_within_allowed_error('1.230002e4', 1.23e4, ''));
-        $this->assertTrue(
-                qtype_varnumeric_question::num_within_allowed_error('1.2301e4', 1.23e4, '1'));
-        $this->assertFalse(
-                qtype_varnumeric_question::num_within_allowed_error('1.23015e4', 1.23e4, '1'));
-        $this->assertTrue(
-                qtype_varnumeric_question::num_within_allowed_error('12301', 1.23e4, '1'));
-        $this->assertFalse(
-                qtype_varnumeric_question::num_within_allowed_error('12301.5', 1.23e4, '1'));
-    }
-
     public function test_wrong_by_a_factor_of_ten() {
         $this->assertTrue(
             qtype_varnumeric_question::wrong_by_a_factor_of_ten('1.23e4', 1.23e5, '', 1));
