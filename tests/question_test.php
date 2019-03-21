@@ -109,28 +109,4 @@ class qtype_varnumeric_question_test extends basic_testcase {
         $this->assertFalse(
             qtype_varnumeric_question::rounding_incorrect('1.23', 1.23456, 2));
     }
-
-    public function test_round_to() {
-        $this->assertSame('0.123', qtype_varnumeric_question::round_to(0.12345, 3, false));
-        $this->assertSame('0.1235', qtype_varnumeric_question::round_to(0.12345, 4, false));
-        // Incorrect rounding.
-        $this->assertSame('1.235e-1', qtype_varnumeric_question::round_to(0.12345, 4, true));
-        // Incorrect rounding.
-        $this->assertSame('1.234e-1',
-                                    qtype_varnumeric_question::round_to(0.12345, 4, true, true));
-        $this->assertSame('1234.57',
-                                    qtype_varnumeric_question::round_to(1234.5678, 6, false));
-        $this->assertSame('1.23457e3',
-                                    qtype_varnumeric_question::round_to(1234.5678, 6, true));
-        // Incorrect rounding.
-        $this->assertSame('1234.56',
-                                    qtype_varnumeric_question::round_to(1234.5678, 6, false, true));
-        $this->assertSame('1.23456e3',
-                                    qtype_varnumeric_question::round_to(1234.5678, 6, true, true));
-        // Always round down when incorrect rounding requested.
-        $this->assertSame('1234.56',
-                                    qtype_varnumeric_question::round_to(1234.5600, 6, false, true));
-        $this->assertSame('1.23456e3',
-                                    qtype_varnumeric_question::round_to(1234.5600, 6, true, true));
-    }
 }
