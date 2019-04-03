@@ -32,7 +32,7 @@ $addons = [
                 'method' => 'varnum_view',
                 'styles' => [
                     'url' => $CFG->wwwroot . '/question/type/varnumericset/mobileapp.css',
-                    'version' => 2019030100
+                    'version' => 2019040200
                 ],
                 'init' => 'varnum_view'
             ],
