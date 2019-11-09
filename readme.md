@@ -19,8 +19,8 @@ the Open University (http://www.open.ac.uk/).
 
 ## Installation and set-up
 
-This plugin should be compatible with Moodle 3.4+. It requires that
-the Variable numeric set question type is also installed.
+This plugin requires that the Variable numeric set question
+type is also installed.
 
 ### Install from the plugins database
 
