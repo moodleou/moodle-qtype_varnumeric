@@ -1,4 +1,4 @@
-# Variable numeric question type [![Build Status](https://travis-ci.org/moodleou/moodle-qtype_varnumeric.svg?branch=master)](https://travis-ci.org/moodleou/moodle-qtype_varnumeric)
+# Variable numeric question type [![Build Status](https://travis-ci.com/moodleou/moodle-qtype_varnumeric.svg?branch=master)](https://travis-ci.com/moodleou/moodle-qtype_varnumeric)
 
 https://moodle.org/plugins/qtype_varnumeric
 
