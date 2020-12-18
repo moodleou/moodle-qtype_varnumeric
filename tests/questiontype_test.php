@@ -44,12 +44,8 @@ class qtype_varnumeric_test extends basic_testcase {
 
     protected $qtype;
 
-    protected function setUp() {
+    protected function setUp(): void {
         $this->qtype = new qtype_varnumeric();
-    }
-
-    protected function tearDown() {
-        $this->qtype = null;
     }
 
     protected function get_test_question_data() {
