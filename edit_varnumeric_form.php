@@ -38,6 +38,11 @@ class qtype_varnumeric_edit_form extends qtype_varnumeric_edit_form_base {
     public function qtype() {
         return 'varnumeric';
     }
+
+    public function definition_inner($mform) {
+        parent::definition_inner($mform);
+    }
+
     protected function add_value_form_fields($mform, $repeated, $repeatedoptions) {
         $repeated[] = $mform->createElement('text', "variant0",
                 get_string('value', 'qtype_varnumeric'), array('size' => 40));

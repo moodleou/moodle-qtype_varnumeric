@@ -1,5 +1,9 @@
 # Change log for the Variable numeric question type
 
+## Changes in 2.0
+
+* This version works with Moodle 4.0.
+* Switch from Travis to Github actions.
 
 ## Changes in 1.9
 
