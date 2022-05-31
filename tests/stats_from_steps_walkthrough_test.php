@@ -48,7 +48,7 @@ class qtype_varnumeric_statistics_from_steps_testcase extends mod_quiz_attempt_w
      */
     protected $report;
 
-    protected function get_full_path_of_csv_file(string $setname, string $test): string {
+    protected function get_full_path_of_csv_file($setname, $test): string {
         // Overridden here so that __DIR__ points to the path of this file.
         return  __DIR__."/fixtures/{$setname}{$test}.csv";
     }
