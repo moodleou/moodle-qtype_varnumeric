@@ -53,6 +53,10 @@ class qtype_varnumeric_edit_form extends qtype_varnumeric_edit_form_base {
         return array($repeated, $repeatedoptions);
     }
 
+    protected function validate_variables(int $countvariable, int $maxvariantno): array {
+        return [];
+    }
+
     public function validation($data, $files) {
         $data['noofvariants'] = 1;
         return parent::validation($data, $files);
