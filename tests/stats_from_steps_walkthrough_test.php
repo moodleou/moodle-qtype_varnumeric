@@ -25,10 +25,11 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
+use mod_quiz\attempt_walkthrough_from_csv_test;
 
 global $CFG;
 require_once($CFG->dirroot . '/mod/quiz/tests/attempt_walkthrough_from_csv_test.php');
-require_once($CFG->dirroot . '/mod/quiz/report/default.php');
+// require_once($CFG->dirroot . '/mod/quiz/report/default.php');
 require_once($CFG->dirroot . '/mod/quiz/report/statistics/report.php');
 require_once($CFG->dirroot . '/mod/quiz/report/reportlib.php');
 
@@ -41,7 +42,7 @@ require_once($CFG->dirroot . '/mod/quiz/report/reportlib.php');
  * @author     Jamie Pratt <me@jamiep.org>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_varnumeric_statistics_from_steps_testcase extends mod_quiz_attempt_walkthrough_from_csv_testcase {
+class qtype_varnumeric_statistics_from_steps_testcase extends attempt_walkthrough_from_csv_test {
 
     /**
      * @var quiz_statistics_report object to do stats calculations.
