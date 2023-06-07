@@ -32,6 +32,11 @@ require_once($CFG->dirroot . '/mod/quiz/report/default.php');
 require_once($CFG->dirroot . '/mod/quiz/report/statistics/report.php');
 require_once($CFG->dirroot . '/mod/quiz/report/reportlib.php');
 
+// Maintain support on main branch.
+if (class_exists('\mod_quiz\attempt_walkthrough_from_csv_test')) {
+    class_alias('\mod_quiz\attempt_walkthrough_from_csv_test', 'mod_quiz_attempt_walkthrough_from_csv_testcase');
+}
+
 /**
  * Quiz attempt walk through using data from csv file.
  *
