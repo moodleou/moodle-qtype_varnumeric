@@ -32,17 +32,16 @@ class qtype_combined_combinable_type_varnumeric extends qtype_combined_combinabl
     protected $identifier = 'numeric';
 
     protected function extra_question_properties() {
-        return array('randomseed' => '', 'vartype' => array(0), 'varname' => array(''), 'variant' => array(''), 'novars' => 1);
+        return ['randomseed' => '', 'vartype' => [0], 'varname' => [''], 'variant' => [''], 'novars' => 1,];
     }
 
     protected function extra_answer_properties() {
-        return array('sigfigs' => 0, 'fraction' => '1.0', 'feedback'  => array('text' => '', 'format' => FORMAT_PLAIN),
-                        'checknumerical' => 0, 'checkscinotation' => 0, 'checkpowerof10' => 0, 'checkrounding' => 0,
-                        'syserrorpenalty' => '0.0');
+        return ['sigfigs' => 0, 'fraction' => '1.0', 'checknumerical' => 0, 'checkscinotation' => 0,
+            'checkpowerof10' => 0, 'checkrounding' => 0, 'syserrorpenalty' => '0.0',];
     }
 
     public function subq_form_fragment_question_option_fields() {
-        return array('requirescinotation' => null);
+        return ['requirescinotation' => null,];
     }
 
     protected function third_param_for_default_question_text() {
@@ -71,7 +70,11 @@ class qtype_combined_combinable_varnumeric extends qtype_combined_combinable_tex
                            '',
                            false);
         $mform->addElement('selectyesno', $this->form_field_name('requirescinotation'),
-                           get_string('scinotation', 'qtype_varnumeric'));
+            get_string('scinotation', 'qtype_varnumeric'));
+
+        $mform->addElement('editor', $this->form_field_name('feedback[0]'),
+            get_string('correctfeedback', 'qtype_combined'), ['rows' => 5], $combinedform->editoroptions);
+        $mform->setType('feedback[0]', PARAM_RAW);
     }
 
     public function data_to_form($context, $fileoptions) {
@@ -81,6 +84,10 @@ class qtype_combined_combinable_varnumeric extends qtype_combined_combinable_tex
             foreach ($this->questionrec->options->answers as $answer) {
                 $numericoptions['answer'][] = $answer->answer;
                 $numericoptions['error'][] = $answer->error;
+                $numericoptions['feedback'][] = [
+                    'text' => $answer->feedback,
+                    'format' => $answer->feedbackformat,
+                ];
             }
         }
         return parent::data_to_form($context, $fileoptions) + $numericoptions;
