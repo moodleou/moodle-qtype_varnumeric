@@ -33,11 +33,15 @@ class qtype_varnumeric_embedded_renderer extends qtype_combined_text_entry_rende
             [, $state] = $subq->question->grade_response(['answer' => $qa->get_last_qt_var($subq->step_data_name('answer'))]);
 
             if ($state === question_state::$gradedright) {
-                $stateclass = 'correct ';
+                if ($options->correctness) {
+                    $stateclass = 'correct ';
+                }
                 $feedback = $subq->question->format_text($answer->feedback, $answer->feedbackformat,
                     $qa, 'question', 'answerfeedback', $answer->id);
             } else {
-                $stateclass = 'incorrect ';
+                if ($options->correctness) {
+                    $stateclass = 'incorrect ';
+                }
                 $feedback = $subq->question->format_generalfeedback($qa);
             }
             // We should set empty so it should not display in the feedback section.
@@ -48,7 +52,7 @@ class qtype_varnumeric_embedded_renderer extends qtype_combined_text_entry_rende
         $html = html_writer::start_div($stateclass . $centerclass . 'combined-varnumeric w-100 mb-1');
         $html .= html_writer::div(parent::subquestion($qa, $options, $subq, $placeno), $centerclass);
 
-        if ($stateclass) {
+        if ($options->feedback) {
             $html .= html_writer::start_div('feedback');
             $html .= html_writer::div($subq->question->make_html_inline($feedback), 'subqspecificfeedback');
             $html .= html_writer::end_div();
