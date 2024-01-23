@@ -61,6 +61,7 @@ class qtype_varnumeric_test_helper extends question_test_helper {
         $form->checkscinotation = ['0' => 0, '1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0];
         $form->checkpowerof10 = ['0' => 0, '1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0];
         $form->checkrounding = ['0' => 0, '1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0];
+        $form->checkscinotationformat = ['0' => 0, '1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0];
         $form->syserrorpenalty = ['0' => 0.0, '1' => 0.0, '2' => 0.0, '3' => 0.0, '4' => 0.0, '5' => 0.0];
         $form->fraction = ['0' => 1.0, '1' => 0.0, '2' => 0.0, '3' => 0.0, '4' => 0.0, '5' => 0.0];
         $form->feedback = [
@@ -125,6 +126,7 @@ class qtype_varnumeric_test_helper extends question_test_helper {
         $form->checkscinotation = ['0' => 0, '1' => 0, '2' => 0];
         $form->checkpowerof10 = ['0' => 0, '1' => 0, '2' => 0];
         $form->checkrounding = ['0' => 0, '1' => 0, '2' => 0];
+        $form->checkscinotationformat = ['0' => 0, '1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0];
         $form->syserrorpenalty = ['0' => 0.0, '1' => 0.0, '2' => 0.0];
         $form->fraction = ['0' => '1.0', '1' => '0.0', '2' => '0.0'];
         $form->feedback = [
@@ -163,7 +165,8 @@ class qtype_varnumeric_test_helper extends question_test_helper {
                 '0',     // Checknumerical.
                 '0',     // Checkscinotation.
                 '0',     // Checkpowerof10.
-                '0'),    // Checkrounding.
+                '0',     // Checkrounding.
+                '0'),    // Checkscinotationformat.
                 2 => new qtype_varnumericset_answer('2', // Id.
                         '*',     // Answer.
                         '0',     // Fraction.
@@ -175,7 +178,8 @@ class qtype_varnumeric_test_helper extends question_test_helper {
                         '0',     // Checknumerical.
                         '0',     // Checkscinotation.
                         '0',     // Checkpowerof10.
-                        '0')   // Checkrounding.
+                        '0',     // Checkrounding.
+                        '0'),    // Checkscinotationformat.
             ];
         $calculatorname = $vn->qtype->calculator_name();
         $vn->calculator = new $calculatorname();
