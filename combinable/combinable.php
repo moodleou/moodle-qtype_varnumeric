@@ -37,7 +37,7 @@ class qtype_combined_combinable_type_varnumeric extends qtype_combined_combinabl
 
     protected function extra_answer_properties() {
         return ['sigfigs' => 0, 'fraction' => '1.0', 'checknumerical' => 0, 'checkscinotation' => 0,
-            'checkpowerof10' => 0, 'checkrounding' => 0, 'syserrorpenalty' => '0.0',];
+            'checkpowerof10' => 0, 'checkrounding' => 0, 'syserrorpenalty' => '0.0', 'checkscinotationformat' => 0,];
     }
 
     public function subq_form_fragment_question_option_fields() {
