@@ -26,7 +26,7 @@
 /**
  * Checks file access for varnumeric questions.
  */
-function qtype_varnumeric_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options=array()) {
+function qtype_varnumeric_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options= []) {
     global $DB, $CFG;
     require_once($CFG->libdir . '/questionlib.php');
     question_pluginfile($course, $context, 'qtype_varnumeric', $filearea, $args, $forcedownload, $options);

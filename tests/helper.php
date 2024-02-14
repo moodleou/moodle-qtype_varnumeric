@@ -31,7 +31,7 @@
  */
 class qtype_varnumeric_test_helper extends question_test_helper {
     public function get_test_questions() {
-        return array('no_accepted_error', 'with_variables');
+        return ['no_accepted_error', 'with_variables'];
     }
 
     /**
@@ -40,11 +40,11 @@ class qtype_varnumeric_test_helper extends question_test_helper {
     public function get_varnumeric_question_form_data_no_accepted_error() {
         $form = new stdClass();
         $form->name = 'Pi to two d.p.';
-        $form->questiontext = array();
+        $form->questiontext = [];
         $form->questiontext['format'] = '1';
         $form->questiontext['text'] = 'What is pi to two d.p.?';
         $form->defaultmark = 1;
-        $form->generalfeedback = array();
+        $form->generalfeedback = [];
         $form->generalfeedback['format'] = '1';
         $form->generalfeedback['text'] = 'Generalfeedback: 3.14 is the right answer.';
         $form->randomseed = '';
@@ -70,7 +70,7 @@ class qtype_varnumeric_test_helper extends question_test_helper {
                 '2' => ['format' => FORMAT_HTML, 'text' => ''],
                 '3' => ['format' => FORMAT_HTML, 'text' => ''],
                 '4' => ['format' => FORMAT_HTML, 'text' => ''],
-                '5' => ['format' => FORMAT_HTML, 'text' => '']
+                '5' => ['format' => FORMAT_HTML, 'text' => ''],
         ];
         return $form;
     }
@@ -131,12 +131,12 @@ class qtype_varnumeric_test_helper extends question_test_helper {
         $form->fraction = ['0' => '1.0', '1' => '0.0', '2' => '0.0'];
         $form->feedback = [
                 '0' => ['format' => FORMAT_HTML, 'text' => 'Well done!'],
-                '1' => ['format' => FORMAT_HTML, 'text' => 'Sorry, no.']
+                '1' => ['format' => FORMAT_HTML, 'text' => 'Sorry, no.'],
         ];
         $form->penalty = '0.3333333';
         $form->hint = [
                 ['text' => 'Please try again.', 'format' => FORMAT_HTML],
-                ['text' => 'You may use a calculator if necessary.', 'format' => FORMAT_HTML]
+                ['text' => 'You may use a calculator if necessary.', 'format' => FORMAT_HTML],
         ];
 
         return $form;

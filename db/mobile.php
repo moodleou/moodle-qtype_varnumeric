@@ -32,13 +32,13 @@ $addons = [
                 'method' => 'varnum_view',
                 'styles' => [
                     'url' => $CFG->wwwroot . '/question/type/varnumericset/mobileapp.css',
-                    'version' => 2019040200
+                    'version' => 2019040200,
                 ],
-                'init' => 'varnum_view'
+                'init' => 'varnum_view',
             ],
         ],
         'lang' => [ // Language strings to be used.
-            ['err_ousupsubnotsupportedonmobile', 'qtype_varnumericset']
-        ]
-    ]
+            ['err_ousupsubnotsupportedonmobile', 'qtype_varnumericset'],
+        ],
+    ],
 ];

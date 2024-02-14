@@ -32,16 +32,16 @@ class qtype_combined_combinable_type_varnumeric extends qtype_combined_combinabl
     protected $identifier = 'numeric';
 
     protected function extra_question_properties() {
-        return ['randomseed' => '', 'vartype' => [0], 'varname' => [''], 'variant' => [''], 'novars' => 1,];
+        return ['randomseed' => '', 'vartype' => [0], 'varname' => [''], 'variant' => [''], 'novars' => 1];
     }
 
     protected function extra_answer_properties() {
         return ['sigfigs' => 0, 'fraction' => '1.0', 'checknumerical' => 0, 'checkscinotation' => 0,
-            'checkpowerof10' => 0, 'checkrounding' => 0, 'syserrorpenalty' => '0.0', 'checkscinotationformat' => 0,];
+            'checkpowerof10' => 0, 'checkrounding' => 0, 'syserrorpenalty' => '0.0', 'checkscinotationformat' => 0];
     }
 
     public function subq_form_fragment_question_option_fields() {
-        return ['requirescinotation' => null,];
+        return ['requirescinotation' => null];
     }
 
     protected function third_param_for_default_question_text() {
@@ -54,13 +54,13 @@ class qtype_combined_combinable_varnumeric extends qtype_combined_combinable_tex
 
     public function add_form_fragment(moodleform $combinedform, MoodleQuickForm $mform, $repeatenabled) {
 
-        $answergroupels = array();
+        $answergroupels = [];
         $answergroupels[] = $mform->createElement('text', $this->form_field_name('answer[0]'),
-                                                  get_string('answer', 'question'), array('size' => 25));
+                                                  get_string('answer', 'question'), ['size' => 25]);
         $answergroupels[] = $mform->createElement('text',
                                                  $this->form_field_name('error[0]'),
                                                  get_string('error', 'qtype_varnumericset'),
-                                                 array('size' => 16));
+                                                 ['size' => 16]);
         $mform->setType($this->form_field_name('answer'), PARAM_RAW);
         $mform->setType($this->form_field_name('error'), PARAM_RAW);
         $mform->addElement('group',
@@ -78,7 +78,7 @@ class qtype_combined_combinable_varnumeric extends qtype_combined_combinable_tex
     }
 
     public function data_to_form($context, $fileoptions) {
-        $numericoptions = array('answer' => array(), 'error' => array());
+        $numericoptions = ['answer' => [], 'error' => []];
 
         if ($this->questionrec !== null) {
             foreach ($this->questionrec->options->answers as $answer) {
@@ -94,7 +94,7 @@ class qtype_combined_combinable_varnumeric extends qtype_combined_combinable_tex
     }
 
     public function validate() {
-        $errors = array();
+        $errors = [];
         $interpret = new qtype_varnumericset_number_interpreter_number_with_optional_sci_notation(false);
         if ('' !== trim($this->formdata->error[0])) {
             if (!$interpret->match($this->formdata->error[0])) {

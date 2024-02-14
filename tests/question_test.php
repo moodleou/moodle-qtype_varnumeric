@@ -14,13 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * Unit tests for the varnumeric question definition class.
- *
- * @package   qtype_varnumeric
- * @copyright 2012 The Open University
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+namespace qtype_varnumeric;
+
+use basic_testcase;
+use qtype_varnumeric_question;
 
 defined('MOODLE_INTERNAL') || die();
 global $CFG;
@@ -32,12 +29,13 @@ require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
 /**
  * Unit tests for the varnumeric question definition class.
  *
+ * @package   qtype_varnumeric
  * @copyright 2012 The Open University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @group qtype_varnumeric
+ * @covers    \qtype_varnumeric_question
  */
-class qtype_varnumeric_question_test extends basic_testcase {
-    public function test_wrong_by_a_factor_of_ten() {
+class question_test extends basic_testcase {
+    public function test_wrong_by_a_factor_of_ten(): void {
         $this->assertTrue(
             qtype_varnumeric_question::wrong_by_a_factor_of_ten('1.23e4', 1.23e5, '', 1));
         $this->assertFalse(
@@ -52,7 +50,7 @@ class qtype_varnumeric_question_test extends basic_testcase {
             qtype_varnumeric_question::wrong_by_a_factor_of_ten('152000', 150, 1, 3));
     }
 
-    public function test_has_number_of_sig_figs() {
+    public function test_has_number_of_sig_figs(): void {
         $this->assertTrue(
             qtype_varnumeric_question::has_number_of_sig_figs('1.23e4', 3));
         $this->assertTrue(
@@ -75,7 +73,7 @@ class qtype_varnumeric_question_test extends basic_testcase {
             qtype_varnumeric_question::has_number_of_sig_figs('152000', 2));
     }
 
-    public function test_has_too_many_sig_figs() {
+    public function test_has_too_many_sig_figs(): void {
         $this->assertTrue(
             qtype_varnumeric_question::has_too_many_sig_figs('1.23456', 1.23456, 2));
         $this->assertTrue(
@@ -98,7 +96,7 @@ class qtype_varnumeric_question_test extends basic_testcase {
             qtype_varnumeric_question::has_too_many_sig_figs('-1.23456e-12', -1.2346e-12, 4));
     }
 
-    public function test_rounding_incorrect() {
+    public function test_rounding_incorrect(): void {
         $this->assertTrue(
             qtype_varnumeric_question::rounding_incorrect('1.234', 1.2345, 4));
         $this->assertTrue(

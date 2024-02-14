@@ -16,14 +16,6 @@
 
 namespace qtype_varnumeric;
 
-/**
- * Unit tests for the varnumeric question edit form.
- *
- * @package qtype_varnumeric
- * @copyright 2023 The Open University
- * @license  https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
 defined('MOODLE_INTERNAL') || die();
 global $CFG;
 
@@ -34,10 +26,10 @@ require_once($CFG->dirroot . '/question/type/varnumericset/tests/form_test.php')
 /**
  * Unit tests for the qtype_varnumeric question edit form.
  *
+ * @package qtype_varnumeric
  * @copyright 2023 The Open University
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @group qtype_varnumeric
- * @covers qtype_varnumeric_edit_form
+ * @covers \qtype_varnumeric_edit_form
  */
 class form_test extends \qtype_varnumericset\form_test {
 
@@ -71,7 +63,7 @@ class form_test extends \qtype_varnumericset\form_test {
      *
      * @return array List of data sets (test cases).
      */
-    public function form_validation_testcases(): array {
+    public static function form_validation_testcases(): array {
         return [
             '1 pre-defined variable' => [
                 [
@@ -83,7 +75,7 @@ class form_test extends \qtype_varnumericset\form_test {
                     'variant0' => [],
                     'variant1' => [],
                 ],
-                []
+                [],
             ],
         ];
     }

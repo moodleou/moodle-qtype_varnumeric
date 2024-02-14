@@ -39,18 +39,14 @@ class qtype_varnumeric_edit_form extends qtype_varnumeric_edit_form_base {
         return 'varnumeric';
     }
 
-    public function definition_inner($mform) {
-        parent::definition_inner($mform);
-    }
-
     protected function add_value_form_fields($mform, $repeated, $repeatedoptions) {
         $repeated[] = $mform->createElement('text', "variant0",
-                get_string('value', 'qtype_varnumeric'), array('size' => 40));
-        $repeatedoptions["variant0"]['disabledif'] = array('vartype', 'eq', 0);
-        $repeatedoptions["variant0"]['helpbutton'] = array('value', 'qtype_varnumeric');
+                get_string('value', 'qtype_varnumeric'), ['size' => 40]);
+        $repeatedoptions["variant0"]['disabledif'] = ['vartype', 'eq', 0];
+        $repeatedoptions["variant0"]['helpbutton'] = ['value', 'qtype_varnumeric'];
         $mform->setType("variant0", PARAM_RAW_TRIMMED);
         $this->add_value_form_last_field($mform, $repeated, $repeatedoptions);
-        return array($repeated, $repeatedoptions);
+        return [$repeated, $repeatedoptions];
     }
 
     protected function validate_variables(int $countvariable, int $maxvariantno): array {

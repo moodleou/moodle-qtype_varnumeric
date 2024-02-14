@@ -14,17 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * Quiz attempt walk through using data from csv file.
- *
- * @package    quiz_statistics
- * @category   phpunit
- * @copyright  2013 The Open University
- * @author     Jamie Pratt <me@jamiep.org>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+namespace qtype_varnumeric;
 
 use mod_quiz\attempt_walkthrough_from_csv_test;
+use question_attempt;
+use question_bank;
+use quiz_statistics_report;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -36,13 +31,14 @@ require_once($CFG->dirroot . '/mod/quiz/report/reportlib.php');
 /**
  * Quiz attempt walk through using data from csv file.
  *
- * @package    quiz_statistics
- * @category   phpunit
- * @copyright  2013 The Open University
- * @author     Jamie Pratt <me@jamiep.org>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   qtype_varnumeric
+ * @copyright 2013 The Open University
+ * @author    Jamie Pratt <me@jamiep.org>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @covers    \qtype_varnumeric_question
+ * @covers    \qtype_varnumeric
  */
-class qtype_varnumeric_statistics_from_steps_testcase extends attempt_walkthrough_from_csv_test {
+class statistics_from_steps_testcase extends attempt_walkthrough_from_csv_test {
 
     /**
      * @var quiz_statistics_report object to do stats calculations.
@@ -51,18 +47,18 @@ class qtype_varnumeric_statistics_from_steps_testcase extends attempt_walkthroug
 
     protected function get_full_path_of_csv_file($setname, $test): string {
         // Overridden here so that __DIR__ points to the path of this file.
-        return  __DIR__."/fixtures/{$setname}{$test}.csv";
+        return  __DIR__ . "/fixtures/{$setname}{$test}.csv";
     }
 
-    protected $files = array('questions', 'steps');
+    protected $files = ['questions', 'steps'];
 
     /**
      * Create a quiz add questions to it, walk through quiz attempts and then check results.
      *
-     * @param PHPUnit_Extensions_Database_DataSet_ITable[] of data read from csv file "questionsXX.csv" and "stepsXX.csv"
+     * @param array of data read from csv file "questionsXX.csv" and "stepsXX.csv"
      * @dataProvider get_data_for_walkthrough
      */
-    public function test_walkthrough_from_csv($quizsettings, $csvdata) {
+    public function test_walkthrough_from_csv($quizsettings, $csvdata): void {
 
         $this->resetAfterTest(true);
         question_bank::get_qtype('random')->clear_caches_before_testing();
@@ -76,7 +72,7 @@ class qtype_varnumeric_statistics_from_steps_testcase extends attempt_walkthroug
         $whichtries = question_attempt::LAST_TRY;
         $groupstudents = new \core\dml\sql_join();
         $questions = $this->report->load_and_initialise_questions_for_calculations($this->quiz);
-        list($quizstats, $questionstats) = $this->report->get_all_stats_and_analysis(
+        [, $questionstats] = $this->report->get_all_stats_and_analysis(
                 $this->quiz, $whichattempts, $whichtries, $groupstudents, $questions);
 
         $qubaids = quiz_statistics_qubaids_condition($this->quiz->id, $groupstudents, $whichattempts);
@@ -95,7 +91,7 @@ class qtype_varnumeric_statistics_from_steps_testcase extends attempt_walkthroug
         $analysis = $responesstats->load_cached($qubaids, $whichtries);
         $variantsnos = $analysis->get_variant_nos();
 
-        $this->assertEquals(array(1), $variantsnos);
+        $this->assertEquals([1], $variantsnos);
         $total = 0;
         $subpartids = $analysis->get_subpart_ids(1);
         $subpartid = current($subpartids);

@@ -14,33 +14,27 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * Unit tests for the varnumeric question type class.
- *
- * @package    qtype_varnumeric
- * @copyright  2012 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+namespace qtype_varnumeric;
 
+use basic_testcase;
+use qtype_varnumeric;
+use question_possible_response;
+use stdClass;
 
 defined('MOODLE_INTERNAL') || die();
 global $CFG;
 
 require_once($CFG->dirroot . '/question/type/varnumeric/questiontype.php');
 
-
 /**
  * Unit tests for the varnumeric question type class.
  *
+ * @package    qtype_varnumeric
  * @copyright  2012 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @group      qtype_varnumeric
+ * @covers     \qtype_varnumeric
  */
-class qtype_varnumeric_test extends basic_testcase {
-    public static $includecoverage = array(
-        'question/type/questiontype.php',
-        'question/type/varnumeric/questiontype.php',
-    );
+class questiontype_test extends basic_testcase {
 
     protected $qtype;
 
@@ -48,37 +42,37 @@ class qtype_varnumeric_test extends basic_testcase {
         $this->qtype = new qtype_varnumeric();
     }
 
-    protected function get_test_question_data() {
+    protected function get_test_question_data(): stdClass {
         $q = new stdClass();
         $q->id = 1;
         $q->options = new stdClass();
-        $q->options->answers[1] = (object) array('answer' => 'frog', 'fraction' => 1);
-        $q->options->answers[2] = (object) array('answer' => '*', 'fraction' => 0.1);
+        $q->options->answers[1] = (object) ['answer' => 'frog', 'fraction' => 1];
+        $q->options->answers[2] = (object) ['answer' => '*', 'fraction' => 0.1];
 
         return $q;
     }
 
-    public function test_name() {
+    public function test_name(): void {
         $this->assertEquals($this->qtype->name(), 'varnumeric');
     }
 
-    public function test_can_analyse_responses() {
+    public function test_can_analyse_responses(): void {
         $this->assertTrue($this->qtype->can_analyse_responses());
     }
 
-    public function test_get_random_guess_score() {
+    public function test_get_random_guess_score(): void {
         $q = $this->get_test_question_data();
         $this->assertEquals(0.1, $this->qtype->get_random_guess_score($q));
     }
 
-    public function test_get_possible_responses() {
+    public function test_get_possible_responses(): void {
         $q = $this->get_test_question_data();
 
-        $this->assertEquals(array(
-            $q->id => array(
+        $this->assertEquals([
+            $q->id => [
                 1 => new question_possible_response('frog', 1),
                 2 => new question_possible_response('*', 0.1),
-                null => question_possible_response::no_response()),
-        ), $this->qtype->get_possible_responses($q));
+                null => question_possible_response::no_response()],
+        ], $this->qtype->get_possible_responses($q));
     }
 }
