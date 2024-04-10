@@ -48,17 +48,18 @@ class qtype_varnumeric_embedded_renderer extends qtype_combined_text_entry_rende
             $subq->question->generalfeedback = '';
         }
 
-        $centerclass = 'd-flex align-items-center ';
-        $html = html_writer::start_div($stateclass . $centerclass . 'combined-varnumeric w-100 mb-1');
-        $html .= html_writer::div(parent::subquestion($qa, $options, $subq, $placeno), $centerclass);
-
+        $feedbackclass = '';
+        $dynamicwrapper = 'span';
+        $divcontent = html_writer::span(parent::subquestion($qa, $options, $subq, $placeno), 'text-nowrap');
         if ($options->feedback) {
-            $html .= html_writer::start_div('feedback');
-            $html .= html_writer::div($subq->question->make_html_inline($feedback), 'subqspecificfeedback');
-            $html .= html_writer::end_div();
+            $feedbackclass = 'd-flex align-items-center';
+            $dynamicwrapper = 'div';
+            $divcontent .= html_writer::start_div('feedback');
+            $divcontent .= html_writer::div($subq->question->make_html_inline($feedback), 'subqspecificfeedback');
+            $divcontent .= html_writer::end_div();
         }
+        $html = html_writer::$dynamicwrapper($divcontent, $stateclass . $feedbackclass . ' combined-varnumeric w-100 mb-1');
 
-        $html .= html_writer::end_div();
         return $html;
     }
 }
