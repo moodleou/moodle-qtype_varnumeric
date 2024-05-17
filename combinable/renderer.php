@@ -51,7 +51,7 @@ class qtype_varnumeric_embedded_renderer extends qtype_combined_text_entry_rende
         $feedbackclass = '';
         $dynamicwrapper = 'span';
         $divcontent = html_writer::span(parent::subquestion($qa, $options, $subq, $placeno), 'text-nowrap');
-        if ($options->feedback) {
+        if ($options->feedback && !empty($feedback)) {
             $feedbackclass = 'd-flex align-items-center';
             $dynamicwrapper = 'div';
             $divcontent .= html_writer::start_div('feedback');
