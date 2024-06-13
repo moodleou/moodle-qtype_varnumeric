@@ -82,10 +82,14 @@ class qtype_combined_combinable_varnumeric extends qtype_combined_combinable_tex
 
         if ($this->questionrec !== null) {
             foreach ($this->questionrec->options->answers as $answer) {
+                $draftid = file_get_submitted_draft_itemid($this->form_field_name('answerfeedback'));
+                $text = file_prepare_draft_area($draftid, $context->id,
+                    'question', 'answerfeedback', $answer->id, $fileoptions, $answer->feedback);
+
                 $numericoptions['answer'][] = $answer->answer;
                 $numericoptions['error'][] = $answer->error;
                 $numericoptions['feedback'][] = [
-                    'text' => $answer->feedback,
+                    'text' => $text,
                     'format' => $answer->feedbackformat,
                 ];
             }
