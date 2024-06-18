@@ -100,6 +100,11 @@ class qtype_combined_combinable_varnumeric extends qtype_combined_combinable_tex
     public function validate() {
         $errors = [];
         $interpret = new qtype_varnumericset_number_interpreter_number_with_optional_sci_notation(false);
+        if (strip_tags($this->formdata->answer[0]) !== $this->formdata->answer[0]) {
+            // Check there is not HTML in the answer. (Numbers must be 3.e8, not 3 x 10<sup>8</sup>.)
+            $errors[$this->form_field_name('answergroup')] = get_string('errorvalidationinvalidanswer', 'qtype_varnumericset');
+        }
+
         if ('' !== trim($this->formdata->error[0])) {
             if (!$interpret->match($this->formdata->error[0])) {
                 $errors[$this->form_field_name('answergroup')] =
