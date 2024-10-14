@@ -25,41 +25,4 @@
 
 class qtype_varnumeric_embedded_renderer extends qtype_combined_text_entry_renderer_base {
 
-    public function subquestion(question_attempt $qa, question_display_options $options,
-            qtype_combined_combinable_base $subq, $placeno) {
-        $stateclass = '';
-        if ($options->feedback) {
-            $answer = reset($subq->question->answers);
-            [, $state] = $subq->question->grade_response(['answer' => $qa->get_last_qt_var($subq->step_data_name('answer'))]);
-
-            if ($state === question_state::$gradedright) {
-                if ($options->correctness) {
-                    $stateclass = 'correct ';
-                }
-                $feedback = $subq->question->format_text($answer->feedback, $answer->feedbackformat,
-                    $qa, 'question', 'answerfeedback', $answer->id);
-            } else {
-                if ($options->correctness) {
-                    $stateclass = 'incorrect ';
-                }
-                $feedback = $subq->question->format_generalfeedback($qa);
-            }
-            // We should set empty so it should not display in the feedback section.
-            $subq->question->generalfeedback = '';
-        }
-
-        $feedbackclass = '';
-        $dynamicwrapper = 'span';
-        $divcontent = html_writer::span(parent::subquestion($qa, $options, $subq, $placeno), 'text-nowrap');
-        if ($options->feedback && !empty($feedback)) {
-            $feedbackclass = 'd-flex align-items-center';
-            $dynamicwrapper = 'div';
-            $divcontent .= html_writer::start_div('feedback');
-            $divcontent .= html_writer::div($subq->question->make_html_inline($feedback), 'subqspecificfeedback');
-            $divcontent .= html_writer::end_div();
-        }
-        $html = html_writer::$dynamicwrapper($divcontent, $stateclass . $feedbackclass . ' combined-varnumeric w-100 mb-1');
-
-        return $html;
-    }
 }
