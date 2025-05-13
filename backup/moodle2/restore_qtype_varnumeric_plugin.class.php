@@ -51,6 +51,44 @@ class restore_qtype_varnumeric_plugin extends restore_qtype_plugin {
         return $paths; // And we return the interesting paths.
     }
 
+    #[\Override]
+    public static function convert_backup_to_questiondata(array $backupdata): \stdClass {
+        $questiondata = parent::convert_backup_to_questiondata($backupdata);
+        $qtype = $questiondata->qtype;
+        if (isset($backupdata["plugin_qtype_{$qtype}_question"]['varnumeric'])) {
+            $questiondata->options = (object) array_merge(
+                (array) $questiondata->options,
+                $backupdata["plugin_qtype_{$qtype}_question"]['varnumeric'][0],
+            );
+        }
+
+        if (isset($backupdata["plugin_qtype_{$qtype}_question"]['varnumeric_answers']['varnumeric_answer'])) {
+            foreach ($backupdata["plugin_qtype_{$qtype}_question"]['varnumeric_answers']['varnumeric_answer']
+                as $varnumericanswer) {
+                foreach ($questiondata->options->answers as &$answer) {
+                    if ($answer->id == $varnumericanswer['answerid']) {
+                        $answer->sigfigs = $varnumericanswer['sigfigs'];
+                        $answer->error = $varnumericanswer['error'];
+                        $answer->syserrorpenalty = $varnumericanswer['syserrorpenalty'];
+                        $answer->checknumerical = $varnumericanswer['checknumerical'];
+                        $answer->checkscinotation = $varnumericanswer['checkscinotation'];
+                        $answer->checkpowerof10 = $varnumericanswer['checkpowerof10'];
+                        $answer->checkrounding = $varnumericanswer['checkrounding'];
+                        $answer->checkscinotationformat = $varnumericanswer['checkscinotationformat'];
+                        continue 2;
+                    }
+                }
+            }
+        }
+        return $questiondata;
+    }
+
+    #[\Override]
+    public static function remove_excluded_question_data(stdClass $questiondata, array $excludefields = []): stdClass {
+        // Option recalculateeverytime default is null, we need to remove it completely.
+        unset($questiondata->options->recalculateeverytime);
+        return parent::remove_excluded_question_data($questiondata, $excludefields);
+    }
 
     /**
      * Process the qtype/varnumeric element.
