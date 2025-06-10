@@ -15,17 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Restore plugin class that provides the necessary information needed to restore one varnumeric qtype plugin.
  * @package   qtype_varnumeric
  * @copyright 2011 The Open University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
-/**
- * Restore plugin class that provides the necessary information
- * needed to restore one varnumeric qtype plugin.
- *
- * @copyright  2011 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class restore_qtype_varnumeric_plugin extends restore_qtype_plugin {
 
@@ -63,8 +56,8 @@ class restore_qtype_varnumeric_plugin extends restore_qtype_plugin {
         }
 
         if (isset($backupdata["plugin_qtype_{$qtype}_question"]['varnumeric_answers']['varnumeric_answer'])) {
-            foreach ($backupdata["plugin_qtype_{$qtype}_question"]['varnumeric_answers']['varnumeric_answer']
-                as $varnumericanswer) {
+            $varnumericanswers = $backupdata["plugin_qtype_{$qtype}_question"]['varnumeric_answers']['varnumeric_answer'];
+            foreach ($varnumericanswers as $varnumericanswer) {
                 foreach ($questiondata->options->answers as &$answer) {
                     if ($answer->id == $varnumericanswer['answerid']) {
                         $answer->sigfigs = $varnumericanswer['sigfigs'];
@@ -92,6 +85,8 @@ class restore_qtype_varnumeric_plugin extends restore_qtype_plugin {
 
     /**
      * Process the qtype/varnumeric element.
+     *
+     * @param array $data The data to process.
      */
     public function process_qtype_varnumeric($data) {
         global $DB;
@@ -119,6 +114,8 @@ class restore_qtype_varnumeric_plugin extends restore_qtype_plugin {
 
     /**
      * Process the qtype/varnumeric_answer element.
+     *
+     * @param array $data The data to process.
      */
     public function process_qtype_varnumeric_answer($data) {
         global $DB;
@@ -138,6 +135,15 @@ class restore_qtype_varnumeric_plugin extends restore_qtype_plugin {
         }
     }
 
+    /**
+     * Processes the `qtype/varnumeric_var` element during restore.
+     *
+     * This function handles the restoration of the `varnumeric_var` data for a question.
+     * It maps the old data to the new question structure and inserts the restored record
+     * into the database if the question was created during the restore process.
+     *
+     * @param array $data The data for the `varnumeric_var` element being processed.
+     */
     public function process_qtype_varnumeric_var($data) {
         global $DB;
 
@@ -156,6 +162,15 @@ class restore_qtype_varnumeric_plugin extends restore_qtype_plugin {
         }
     }
 
+    /**
+     * Processes the `qtype/varnumeric_variant` element during restore.
+     *
+     * This function handles the restoration of the `varnumeric_variant` data for a question.
+     * It maps the old data to the new question structure and inserts the restored record
+     * into the database if the question was created during the restore process.
+     *
+     * @param array $data The data for the `varnumeric_variant` element being processed.
+     */
     public function process_qtype_varnumeric_variant($data) {
         global $DB;
 

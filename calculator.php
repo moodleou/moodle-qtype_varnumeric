@@ -27,10 +27,12 @@ require_once($CFG->dirroot . '/question/type/varnumericset/calculatorbase.php');
  */
 class qtype_varnumeric_calculator extends qtype_varnumeric_calculator_base {
 
+    #[\Override]
     public function get_num_variants_in_form() {
         return 1;
     }
 
+    #[\Override]
     protected function get_defined_variant($varno, $variantno) {
         // Whatever the variant no we always use the first defined variant.
         $variantno = 0;

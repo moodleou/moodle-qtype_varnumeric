@@ -34,9 +34,9 @@ $string['pluginname_link'] = 'question/type/varnumeric';
 $string['pluginnameadding'] = 'Adding a Variable numeric question';
 $string['pluginnameediting'] = 'Editing a Variable numeric question';
 $string['pluginnamesummary'] = 'Allows a numeric response, expressions are evaluated on the fly and the evaluated expression is compared to the student response';
+$string['privacy:metadata'] = 'The Variable numeric plugin does not store any personal data.';
 $string['scinotation'] = 'Scientific notation';
 $string['value'] = 'Value';
 $string['value_help'] = 'Enter values for \'Predefined variables\' here or you will see calculated values displayed here for a \'Calculated variable\'.
 
 Be aware that for a calculated value the value you see will be different for each user.';
-$string['privacy:metadata'] = 'The Variable numeric plugin does not store any personal data.';

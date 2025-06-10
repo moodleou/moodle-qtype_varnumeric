@@ -25,6 +25,14 @@
 
 /**
  * Checks file access for varnumeric questions.
+ *
+ * @param stdClass $course The course object.
+ * @param stdClass $cm The course module object.
+ * @param context $context The context object.
+ * @param string $filearea The file area being accessed.
+ * @param array $args The file arguments.
+ * @param bool $forcedownload Whether to force download the file.
+ * @param array $options Additional options for file serving.
  */
 function qtype_varnumeric_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options= []) {
     global $DB, $CFG;
