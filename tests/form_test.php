@@ -18,10 +18,11 @@ namespace qtype_varnumeric;
 
 defined('MOODLE_INTERNAL') || die();
 global $CFG;
+use qtype_varnumeric_test_helper;
 
 require_once($CFG->dirroot . '/question/type/varnumeric/question.php');
 require_once($CFG->dirroot . '/question/type/varnumericset/tests/form_test.php');
-
+require_once($CFG->dirroot . '/question/type/varnumeric/tests/helper.php');
 
 /**
  * Unit tests for the qtype_varnumeric question edit form.
@@ -31,7 +32,49 @@ require_once($CFG->dirroot . '/question/type/varnumericset/tests/form_test.php')
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @covers \qtype_varnumeric_edit_form
  */
-class form_test extends \qtype_varnumericset\form_test {
+class form_test extends \advanced_testcase {
+
+    /**
+     * Prepare test data.
+     *
+     * @param string $qtype Question type.
+     * @return object Moodle form object.
+     */
+    protected function prepare_test_data(string $qtype): object {
+        $this->resetAfterTest();
+        $this->setAdminUser();
+        $gen = $this->getDataGenerator();
+        $course = $gen->create_course();
+        $context = \context_course::instance($course->id);
+
+        if (qtype_varnumeric_test_helper::plugin_is_installed('mod_qbank')) {
+            $qbank = $gen->create_module('qbank', ['course' => $course->id]);
+            $context = \context_module::instance($qbank->cmid);
+            $contexts = qtype_varnumeric_test_helper::question_edit_contexts($context);
+            $category = question_get_default_category($context->id, true);
+        } else {
+            // TODO: remove this once Moodle 5.0 is the lowest supported version.
+            $contexts = qtype_varnumeric_test_helper::question_edit_contexts(\context_course::instance($course->id));
+            $category = question_make_default_categories($contexts->all());
+        }
+
+        $question = new \stdClass();
+        $question->category = $category->id;
+        $question->contextid = $category->contextid;
+        $question->qtype = $qtype;
+        $question->createdby = 1;
+        $question->questiontext = 'varnumeric question type';
+        $question->timecreated = '1234567890';
+        $question->formoptions = new \stdClass();
+        $question->formoptions->canedit = true;
+        $question->formoptions->canmove = true;
+        $question->formoptions->cansaveasnew = false;
+        $question->formoptions->repeatelements = true;
+
+        $qtypeobj = \question_bank::get_qtype($question->qtype);
+
+        return $qtypeobj->create_editing_form('question.php', $question, $category, $contexts, true);
+    }
 
     /**
      * Test editing form validation with wrong variables format.
