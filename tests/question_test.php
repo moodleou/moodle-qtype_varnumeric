@@ -34,7 +34,7 @@ require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @covers    \qtype_varnumeric_question
  */
-class question_test extends basic_testcase {
+final class question_test extends basic_testcase {
     public function test_wrong_by_a_factor_of_ten(): void {
         $this->assertTrue(
             qtype_varnumeric_question::wrong_by_a_factor_of_ten('1.23e4', 1.23e5, '', 1));

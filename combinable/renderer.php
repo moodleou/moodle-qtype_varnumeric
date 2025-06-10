@@ -22,7 +22,6 @@
  * @author     Jamie Pratt <me@jamiep.org>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 class qtype_varnumeric_embedded_renderer extends qtype_combined_text_entry_renderer_base {
 
 }

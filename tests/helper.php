@@ -17,12 +17,13 @@
 /**
  * Test helpers for the varnumeric question type.
  *
- * @package    qtype
+ * @package    qtype_varnumeric
  * @subpackage varnumeric
  * @copyright  2012 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
 global $CFG;
 require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
 
@@ -33,14 +34,18 @@ require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_varnumeric_test_helper extends question_test_helper {
+
+    #[\Override]
     public function get_test_questions() {
         return ['no_accepted_error', 'with_variables'];
     }
 
     /**
+     * Creates a varnumeric question with no accepted error.
+     *
      * @return qtype_varnumeric_question
      */
-    public function get_varnumeric_question_form_data_no_accepted_error() {
+    public function get_varnumeric_question_form_data_no_accepted_error(): qtype_varnumeric_question {
         $form = new stdClass();
         $form->name = 'Pi to two d.p.';
         $form->questiontext = [];
@@ -77,10 +82,13 @@ class qtype_varnumeric_test_helper extends question_test_helper {
         ];
         return $form;
     }
+
     /**
+     * Creates a varnumeric question with no accepted error.
+     *
      * @return qtype_varnumeric_question
      */
-    public function make_varnumeric_question_with_variables() {
+    public function make_varnumeric_question_with_variables(): qtype_varnumeric_question {
         $vn = $this->make_varnumeric_question_no_accepted_error();
 
         $vn->questiontext = '<p>What is [[a]] + [[b]]?</p>';
@@ -100,7 +108,16 @@ class qtype_varnumeric_test_helper extends question_test_helper {
         return$vn;
     }
 
-    public function get_varnumeric_question_form_data_with_variables() {
+    /**
+     * Returns form data for a varnumeric question with variables.
+     *
+     * This function creates a form data object for a varnumeric question that includes
+     * variables and predefined variants. It sets various properties such as question text,
+     * default marks, general feedback, and answer options.
+     *
+     * @return stdClass The form data object for the varnumeric question.
+     */
+    public function get_varnumeric_question_form_data_with_variables(): stdClass {
         $form = new stdClass();
         $form->name = 'Pi to two d.p.';
         $form->questiontext = ['text' => '<p>What is [[a]] + [[b]]?</p>', 'format' => FORMAT_HTML];
@@ -145,7 +162,12 @@ class qtype_varnumeric_test_helper extends question_test_helper {
         return $form;
     }
 
-    public function make_varnumeric_question_no_accepted_error() {
+    /**
+     * Creates a varnumeric question with no accepted error.
+     *
+     * @return qtype_varnumeric_question
+     */
+    public function make_varnumeric_question_no_accepted_error(): qtype_varnumeric_question {
         question_bank::load_question_definition_classes('varnumeric');
         $vn = new qtype_varnumeric_question();
         test_question_maker::initialise_a_question($vn);

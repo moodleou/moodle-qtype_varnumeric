@@ -25,7 +25,12 @@ namespace qtype_varnumeric\output;
  */
 class mobile {
 
-    public static function varnum_view() {
+    /**
+     * Returns the mobile view for the varnumeric question type.
+     *
+     * @return array An array containing templates and JavaScript for the mobile view.
+     */
+    public static function varnum_view(): array {
         global $CFG;
         // General notes:
         // If you have worked on mobile activities, there is no cmid or courseid in $args here.

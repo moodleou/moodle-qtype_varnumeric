@@ -38,19 +38,23 @@ require_once($CFG->dirroot . '/question/type/varnumericset/questiontypebase.php'
  */
 class qtype_varnumeric extends qtype_varnumeric_base {
 
+    #[\Override]
     public function recalculate_every_time() {
         return true;
     }
 
+    #[\Override]
     public function db_table_prefix() {
         return 'qtype_varnumeric';
     }
 
+    #[\Override]
     public function save_question_options($form) {
         $form->noofvariants = 1;
         return parent::save_question_options($form);
     }
 
+    #[\Override]
     public function break_down_stats_and_response_analysis_by_variant($questiondata) {
         return false;
     }

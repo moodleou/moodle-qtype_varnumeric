@@ -35,10 +35,12 @@ require_once($CFG->dirroot . '/question/type/varnumericset/edit_varnumericset_fo
  */
 class qtype_varnumeric_edit_form extends qtype_varnumeric_edit_form_base {
 
+    #[\Override]
     public function qtype() {
         return 'varnumeric';
     }
 
+    #[\Override]
     protected function add_value_form_fields($mform, $repeated, $repeatedoptions) {
         $repeated[] = $mform->createElement('text', "variant0",
                 get_string('value', 'qtype_varnumeric'), ['size' => 40]);
@@ -49,10 +51,12 @@ class qtype_varnumeric_edit_form extends qtype_varnumeric_edit_form_base {
         return [$repeated, $repeatedoptions];
     }
 
+    #[\Override]
     protected function validate_variables(int $countvariable, int $maxvariantno): array {
         return [];
     }
 
+    #[\Override]
     public function validation($data, $files) {
         $data['noofvariants'] = 1;
         return parent::validation($data, $files);

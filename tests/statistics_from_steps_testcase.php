@@ -35,8 +35,6 @@ require_once($CFG->dirroot . '/mod/quiz/report/reportlib.php');
  * @copyright 2013 The Open University
  * @author    Jamie Pratt <me@jamiep.org>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @covers    \qtype_varnumeric_question
- * @covers    \qtype_varnumeric
  */
 class statistics_from_steps_testcase extends attempt_walkthrough_from_csv_test {
 
@@ -45,18 +43,23 @@ class statistics_from_steps_testcase extends attempt_walkthrough_from_csv_test {
      */
     protected $report;
 
-    protected function get_full_path_of_csv_file($setname, $test): string {
+    #[\Override]
+    protected static function get_full_path_of_csv_file($setname, $test): string {
         // Overridden here so that __DIR__ points to the path of this file.
         return  __DIR__ . "/fixtures/{$setname}{$test}.csv";
     }
 
+    /**
+     * Files used by this test.
+     * @var array
+     */
     protected $files = ['questions', 'steps'];
 
     /**
      * Create a quiz add questions to it, walk through quiz attempts and then check results.
      *
-     * @param array of data read from csv file "questionsXX.csv" and "stepsXX.csv"
-     * @dataProvider get_data_for_walkthrough
+     * @param array $quizsettings Settings for the quiz.
+     * @param array $csvdata Data from the CSV file.
      */
     public function test_walkthrough_from_csv($quizsettings, $csvdata): void {
 

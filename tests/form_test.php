@@ -32,7 +32,7 @@ require_once($CFG->dirroot . '/question/type/varnumeric/tests/helper.php');
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @covers \qtype_varnumeric_edit_form
  */
-class form_test extends \advanced_testcase {
+final class form_test extends \advanced_testcase {
 
     /**
      * Prepare test data.
