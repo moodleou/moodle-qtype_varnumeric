@@ -28,14 +28,53 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot.'/question/type/varnumericset/number_interpreter.php');
 
 /**
- * Class representing the combinable type for varnumeric questions in the combined question type plugin.
- *
- * Extends the base combinable type class to provide specific functionality for varnumeric questions,
- * allowing them to be used within combined questions in Moodle.
- *
- * @package    qtype_varnumeric
- * @copyright  2025 The Open University
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * Class qtype_combined_combinable_type_varnumeric. Collects methods for the varnumeric wiget.
+ */
+class qtype_combined_combinable_type_varnumeric extends qtype_combined_combinable_type_base {
+
+    /**
+     * @var null|string string used to identify this question type in the combined question type plugin.
+     */
+    protected $identifier = 'numeric';
+
+    #[\Override]
+    protected function extra_question_properties() {
+        return ['randomseed' => '', 'vartype' => [0], 'varname' => [''], 'variant' => [''], 'novars' => 1];
+    }
+
+    #[\Override]
+    protected function extra_answer_properties() {
+        return ['sigfigs' => 0, 'fraction' => '1.0', 'checknumerical' => 0, 'checkscinotation' => 0,
+            'checkpowerof10' => 0, 'checkrounding' => 0, 'syserrorpenalty' => '0.0', 'checkscinotationformat' => 0];
+    }
+
+    #[\Override]
+    public function subq_form_fragment_question_option_fields() {
+        return ['requirescinotation' => null];
+    }
+
+    #[\Override]
+    protected function third_param_for_default_question_text() {
+        return '__10__';
+    }
+
+    #[\Override]
+    public function render_feedback(question_attempt $qa, qtype_combined_combinable_base $subq): string {
+        [, $state] = $subq->question->grade_response(['answer' => $qa->get_last_qt_var($subq->step_data_name('answer'))]);
+        if ($state === question_state::$gradedright) {
+            $answer = reset($subq->question->answers);
+            $feedback = $subq->question->format_text($answer->feedback, $answer->feedbackformat,
+                $qa, 'question', 'answerfeedback', $answer->id);
+        } else {
+            $feedback = $subq->question->format_generalfeedback($qa);
+        }
+        return $feedback;
+    }
+
+}
+
+/**
+ * Class qtype_combined_combinable_varnumeric.
  */
 class qtype_combined_combinable_varnumeric extends qtype_combined_combinable_text_entry {
 
