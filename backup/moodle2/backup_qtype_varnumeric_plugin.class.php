@@ -15,14 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Provides the information to back up varnumeric questions.
+ * Provides the information to backup varnumeric questions.
  * @package   qtype_varnumeric
  * @copyright 2011 The Open University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
- * Provides the information to back up varnumeric questions.
+ * Provides the information to backup varnumeric questions.
  *
  * @copyright 2011 The Open University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -71,10 +71,6 @@ class backup_qtype_varnumeric_plugin extends backup_qtype_plugin {
     /**
      * Adds the `varnumeric_vars` structure to the backup element.
      *
-     * This function defines the structure for backing up the `varnumeric_vars` data
-     * associated with a question. It ensures the correct hierarchy and sources are set
-     * for the backup process.
-     *
      * @param backup_nested_element $element The parent backup element to which the vars structure will be added.
      */
     protected function add_question_qtype_varnumeric_vars($element) {
@@ -102,10 +98,6 @@ class backup_qtype_varnumeric_plugin extends backup_qtype_plugin {
     /**
      * Adds the `varnumeric_variants` structure to the backup element.
      *
-     * This function defines the structure for backing up the `varnumeric_variants` data
-     * associated with a question. It ensures the correct hierarchy and sources are set
-     * for the backup process.
-     *
      * @param backup_nested_element $element The parent backup element to which the variants structure will be added.
      */
     protected function add_question_qtype_varnumeric_variants($element) {
@@ -131,10 +123,6 @@ class backup_qtype_varnumeric_plugin extends backup_qtype_plugin {
 
     /**
      * Adds the `varnumeric_answers` structure to the backup element.
-     *
-     * This function defines the structure for backing up the `varnumeric_answers` data
-     * associated with a question. It ensures the correct hierarchy and sources are set
-     * for the backup process.
      *
      * @param backup_nested_element $element The parent backup element to which the answers structure will be added.
      */

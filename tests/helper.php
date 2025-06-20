@@ -41,7 +41,7 @@ class qtype_varnumeric_test_helper extends question_test_helper {
     }
 
     /**
-     * Creates a varnumeric question with no accepted error.
+     * Returns the form data for a varnumeric question with no accepted error.
      *
      * @return qtype_varnumeric_question
      */
@@ -110,10 +110,6 @@ class qtype_varnumeric_test_helper extends question_test_helper {
 
     /**
      * Returns form data for a varnumeric question with variables.
-     *
-     * This function creates a form data object for a varnumeric question that includes
-     * variables and predefined variants. It sets various properties such as question text,
-     * default marks, general feedback, and answer options.
      *
      * @return stdClass The form data object for the varnumeric question.
      */
