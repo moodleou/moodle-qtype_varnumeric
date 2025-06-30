@@ -43,9 +43,9 @@ class qtype_varnumeric_test_helper extends question_test_helper {
     /**
      * Returns the form data for a varnumeric question with no accepted error.
      *
-     * @return qtype_varnumeric_question
+     * @return stdClass
      */
-    public function get_varnumeric_question_form_data_no_accepted_error(): qtype_varnumeric_question {
+    public function get_varnumeric_question_form_data_no_accepted_error(): stdClass {
         $form = new stdClass();
         $form->name = 'Pi to two d.p.';
         $form->questiontext = [];
